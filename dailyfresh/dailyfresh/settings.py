@@ -26,7 +26,8 @@ SECRET_KEY = 'ue2c+__fej^x(^ah(pg-%g(0%-@bh^(gkmcrl_1^@g(v_)%(-6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['182.92.87.221', 'localhost', '0.0.0.0:8000', '127.0.0.1']
+# ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -122,30 +123,36 @@ TINYMCE_DEFAULT_CONFIG = {
     'height': 400,
 }
 
-# 发送邮件配置
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# smpt服务地址
-EMAIL_HOST = 'smtp.163.com'
-EMAIL_PORT = 25
+## 发送邮件配置
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+## smpt服务地址
+# EMAIL_HOST = 'smtp.163.com'
+# EMAIL_PORT = 465
 # 发送邮件的邮箱
-# EMAIL_HOST_USER = 'litaiji310208013@163.com'
-EMAIL_HOST_USER = 'litaiji8404@163.com'
+## EMAIL_HOST_USER = 'litaiji310208013@163.com'
+# EMAIL_HOST_USER = 'litaiji8404@163.com'
 # 在邮箱中设置的客户端授权密码
-EMAIL_HOST_PASSWORD = 'a123456'
+# EMAIL_HOST_PASSWORD = 'a123456'
 # 收件人看到的发件人
-# EMAIL_FROM = '天天生鲜<litaiji310208013@163.com>'
-EMAIL_FROM = '天天生鲜<litaiji8404@163.com>'
+## EMAIL_FROM = '天天生鲜<litaiji310208013@163.com>'
+# EMAIL_FROM = '天天生鲜<litaiji8404@163.com>'
 
+
+# 发送邮件的设置
+EMAIL_HOST = 'smtp.163.com'            # 发送邮件的SMTP服务器
+EMAIL_HOST_USER = 'litaiji8404@163.com'      # 发送邮箱的用户名
+EMAIL_HOST_PASSWORD = 'a123456'  # 发送邮箱的授权码
+EMAIL_PORT = 465             # 端口号
+EMAIL_USE_TLS = False         # 发送的模式
+EMAIL_USE_SSL = True        # 加密模式
+EMAIL_FROM = '天天生鲜<litaiji8404@163.com>'
 
 
 # Django的缓存配置
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://192.168.1.105:6379/9",
-        # "LOCATION": "redis://192.168.43.171:6379/9",
-        # "LOCATION": "redis://10.0.128.126:6379/9",
-        # "LOCATION": "redis://10.0.125.178:6379/9",
+        "LOCATION": "redis://182.92.87.221/9",
         "OPTIONS": {
         "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
@@ -172,4 +179,4 @@ FDFS_CLIENT_CONF='./utils/fdfs/client.conf'
 
 # 设置fdfs存储服务器上nginx的IP和端口号
 # FDFS_URL='http://172.16.179.131:8888/'
-FDFS_URL='http://192.168.1.105:8888/'
+FDFS_URL='http://182.92.87.221:8888/'

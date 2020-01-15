@@ -26,7 +26,8 @@ SECRET_KEY = '3c7j+i-@fdiigvinji#_8=xiwy(h1fj-1802p!9wbzct_%yatq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '0.0.0.0:8000', '127.0.0.1']
+# ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -87,8 +88,7 @@ DATABASES = {
         'NAME': 'dailyfresh',
         'USER': 'root',
         'PASSWORD': '123',
-        'HOST': '192.168.1.105',
-        # 'HOST': '192.168.43.171',
+        'HOST': '182.92.87.221:22',
         'PORT':3306,
     }
 }
@@ -124,19 +124,32 @@ TINYMCE_DEFAULT_CONFIG = {
     'height': 400,
 }
 
-# 发送邮件配置
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# smpt服务地址
-EMAIL_HOST = 'smtp.163.com'
-EMAIL_PORT = 25
+
+
+## 发送邮件配置
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+## smpt服务地址
+# EMAIL_HOST = 'smtp.163.com'
+# EMAIL_PORT = 465
 # 发送邮件的邮箱
-# EMAIL_HOST_USER = 'litaiji310208013@163.com'
-EMAIL_HOST_USER = 'litaiji8404@163.com'
+## EMAIL_HOST_USER = 'litaiji310208013@163.com'
+# EMAIL_HOST_USER = 'litaiji8404@163.com'
 # 在邮箱中设置的客户端授权密码
-EMAIL_HOST_PASSWORD = 'a123456'
+# EMAIL_HOST_PASSWORD = 'a123456'
 # 收件人看到的发件人
-# EMAIL_FROM = '天天生鲜<litaiji310208013@163.com>'
+## EMAIL_FROM = '天天生鲜<litaiji310208013@163.com>'
+# EMAIL_FROM = '天天生鲜<litaiji8404@163.com>'
+
+
+# 发送邮件的设置
+EMAIL_HOST = 'smtp.163.com'            # 发送邮件的SMTP服务器
+EMAIL_HOST_USER = 'litaiji8404@163.com'      # 发送邮箱的用户名
+EMAIL_HOST_PASSWORD = 'a123456'  # 发送邮箱的授权码
+EMAIL_PORT = 465             # 端口号
+EMAIL_USE_TLS = False         # 发送的模式
+EMAIL_USE_SSL = True        # 加密模式
 EMAIL_FROM = '天天生鲜<litaiji8404@163.com>'
+
 
 
 
@@ -144,7 +157,7 @@ EMAIL_FROM = '天天生鲜<litaiji8404@163.com>'
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://192.168.1.105:6379/9",
+        "LOCATION": "redis://182.92.87.221:6379/9",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
