@@ -1,5 +1,5 @@
 from django.contrib import admin
-from celery_tasks.tasks import generate_static_index_html
+
 from goods.models import GoodsType
 from goods.models import GoodsSKU
 from goods.models import Goods
@@ -15,11 +15,15 @@ class BaseModelAdmin(admin.ModelAdmin):
         super().save_model(request, obj, form, change)
 
         # 发出任务,让celery重新生成静态页面
+        from celery_tasks.tasks import generate_static_index_html
         generate_static_index_html.delay()
 
     def delete_model(self, request, obj):
         '''删除表中数据时调用'''
+   	super().delete_model(request, obj)
+        from celery_tasks.tasks import generate_static_index_html
         generate_static_index_html.delay()
+        
 
 class IndexPromotinBannerAdmin(BaseModelAdmin):
     pass

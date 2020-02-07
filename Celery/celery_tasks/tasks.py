@@ -1,10 +1,14 @@
-from celery import Celery
-import os
-from django.template import loader, RequestContext
-from django.core.mail import send_mail
-from requests import request
 
+from celery import Celery
+from django.template import loader
+from django.core.mail import send_mail
 from dailyfresh import settings
+
+import os
+import django
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dailyfresh.settings")
+django.setup()
+
 from goods.models import GoodsType
 from goods.models import IndexPromotionBanner
 from goods.models import IndexTypeGoodsBanner
